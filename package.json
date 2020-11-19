@@ -33,8 +33,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "prebuild": "rimraf docs",
-    "build": "react-scripts build && mv build docs",
+    "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },

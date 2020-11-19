@@ -1,5 +1,5 @@
 import React from 'react';
-import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
+import {HashRouter as Router, Route, Switch} from 'react-router-dom';
 import {LoginCallback, SecureRoute, Security} from '@okta/okta-react';
 import './assets/App.scss';
 import {HelmetProvider} from "react-helmet-async";
