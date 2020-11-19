@@ -1,0 +1,36 @@
+@import "src/assets/variables";
+
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: $primary-background-color;
+  box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.05);
+  width: 100%;
+
+  nav {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 1rem;
+    padding-bottom: 1rem;
+
+    .header-search {
+      display: flex;
+      flex: 1;
+      justify-content: center;
+    }
+  }
+
+  .header-dropdown--content {
+    button {
+      display: flex;
+      align-items: center;
+
+      svg {
+        margin-right: .5rem;
+      }
+    }
+
+  }
+}

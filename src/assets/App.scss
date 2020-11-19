@@ -1,0 +1,27 @@
+@import "~@contentmunch/muncher-ui/lib/assets/default.scss";
+@import "src/assets/variables";
+
+html {
+
+  background: $primary-background-color;
+}
+
+main {
+  min-height: 60vh;
+
+  .section-align--center {
+    height: 50vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+a {
+  text-decoration: none;
+  color: $primary-color;
+}
+
+a:hover {
+  opacity: .7;
+}

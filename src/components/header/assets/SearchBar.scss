@@ -1,0 +1,15 @@
+@import "src/assets/variables";
+
+.search-bar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .muncher-input {
+    width: 50vw;
+  }
+
+  .muncher-button {
+    margin: 0 .5rem;
+  }
+}
