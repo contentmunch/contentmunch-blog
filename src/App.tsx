@@ -1,21 +1,21 @@
 import React from 'react';
 import {HashRouter as Router, Route, Switch} from 'react-router-dom';
-import {LoginCallback, SecureRoute, Security} from '@okta/okta-react';
 import './assets/App.scss';
 import {HelmetProvider} from "react-helmet-async";
-import {Home} from "./pages/Home";
-import {NotFound} from "./pages/NotFound";
-import {CALLBACK_PATH, config} from "./service/LoginConfig";
-import {Header} from "./components/header/Header";
-import {Footer} from "./components/footer/Footer";
-import {ArticlePage} from "./pages/ArticlePage";
-import {ArticleEditPage} from "./pages/ArticleEditPage";
+import {LoginCallback, Security} from "@okta/okta-react";
+import {CALLBACK_PATH, config} from "./article/service/LoginConfig";
+import {NotFound} from "./NotFound";
+import {Header} from "./article/components/header/Header";
+import {Footer} from "./article/components/footer/Footer";
+import {Home} from "./article/pages/Home";
+import {ArticleViewer} from "./article/pages/ArticleViewer";
 
+export const ARTICLE_ROUTE = "/articles";
 export const App: React.FC = () => {
-
     return (
         <HelmetProvider>
-            <Router>
+            <Router hashType="noslash">
+
                 <Security {...config}>
                     <Header/>
                     <Switch>
@@ -23,21 +23,16 @@ export const App: React.FC = () => {
                         <Route exact path="/">
                             <Home/>
                         </Route>
-                        <Route exact path="/articles/:id">
-                            <ArticlePage/>
+                        <Route path="/:id">
+                            <ArticleViewer/>
                         </Route>
-
-                        <SecureRoute exact path="/articles/:id/edit">
-                            <ArticleEditPage/>
-                        </SecureRoute>
-
                         <Route path="*">
-
                             <NotFound/>
                         </Route>
                     </Switch>
                     <Footer/>
                 </Security>
+
             </Router>
         </HelmetProvider>
     );

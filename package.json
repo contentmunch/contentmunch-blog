@@ -4,8 +4,8 @@
   "homepage": "https://blog.contentmunch.com",
   "private": true,
   "dependencies": {
-    "@contentmunch/muncher": "^0.6.10",
-    "@contentmunch/muncher-ui": "^0.6.18",
+    "@contentmunch/muncher": "^0.6.31",
+    "@contentmunch/muncher-ui": "^0.6.30",
     "@okta/okta-react": "^3.0.8",
     "@testing-library/jest-dom": "^5.11.5",
     "@testing-library/react": "^11.1.0",
@@ -32,8 +32,9 @@
     "web-vitals": "^0.2.4"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
+    "start": "export PORT=3006 && react-scripts start ",
+    "prebuild": "rimraf docs",
+    "build": "react-scripts build && mv build docs",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
