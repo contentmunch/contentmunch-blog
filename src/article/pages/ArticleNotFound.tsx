@@ -10,7 +10,7 @@ export const ArticleNotFound: React.FC = () => {
             </Helmet>
 
             <section className="section-align--center">
-                <h2>Uh-oh, this is a 404</h2>
+                <h2>Uh-oh, article not found!</h2>
             </section>
 
         </main>
