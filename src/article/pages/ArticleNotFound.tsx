@@ -1,7 +1,7 @@
 import React from 'react';
 import {Helmet} from "react-helmet-async";
 
-export const NotFound: React.FC = () => {
+export const ArticleNotFound: React.FC = () => {
     return (
         <main>
             <Helmet>
