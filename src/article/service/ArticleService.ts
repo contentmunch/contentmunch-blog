@@ -1,7 +1,7 @@
-import {api, authHeader} from "./Api";
+import {api} from "./Api";
 import {Article} from "../data/Article";
 
-const addEllipsis = (text: string, size?: number) => {
+export const addEllipsis = (text: string, size?: number) => {
     if (!size) {
         size = 150;
     }
@@ -30,16 +30,4 @@ export const getRecentArticles = (size: number): Promise<Article[]> => {
 export const getArticle = (id: string): Promise<Article> => {
     return api.get("articles/" + id + "?projection=withId")
         .then(response => response.data);
-}
-export const postArticle = (accessToken: string): Promise<Article> => {
-    return api.post("articles?projection=withId", {
-        title: "",
-        content: "",
-        status: "active"
-    }, authHeader(accessToken))
-        .then(respone => respone.data);
-}
-export const patchArticle = (article: Article, accessToken: string): Promise<Article> => {
-    return api.patch("articles/" + article.id+"?projection=withId", {...article}, authHeader(accessToken))
-        .then(respone => respone.data);
 }
