@@ -2,15 +2,12 @@ import React from 'react';
 import {HashRouter as Router, Route, Switch} from 'react-router-dom';
 import './assets/App.scss';
 import {HelmetProvider} from "react-helmet-async";
-import {Header} from "./article/components/header/Header";
-import {Footer} from "./article/components/footer/Footer";
-import {ArticleHome} from "./article/pages/ArticleHome";
-import {ArticleViewer} from "./article/pages/ArticleViewer";
+import {ArticleHome, ArticleViewer, Footer, Header} from "./article";
 
-export const App: React.FC = () => {
+export default function App() {
     return (
         <HelmetProvider>
-            <Router hashType="noslash" >
+            <Router hashType="noslash">
                 <Header/>
                 <Switch>
                     <Route exact path="/">
@@ -24,4 +21,4 @@ export const App: React.FC = () => {
             </Router>
         </HelmetProvider>
     );
-};
+}

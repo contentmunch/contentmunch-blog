@@ -1,6 +1,9 @@
+//react-scripts test overwrites the tsconfig setting for "noEmit": false to true,
+//creating a workaround to use this config file for typescript types
 {
   "compilerOptions": {
     "target": "es5",
+
     "lib": [
       "dom",
       "dom.iterable",
@@ -20,9 +23,9 @@
     "jsx": "react",
     "outDir": "lib",
     "declaration": true,
-    "noEmit": true
   },
   "include": [
     "src"
   ]
 }
+

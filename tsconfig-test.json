@@ -17,10 +17,10 @@
     "moduleResolution": "node",
     "resolveJsonModule": true,
     "isolatedModules": true,
+    "noEmit": true,
     "jsx": "react",
     "outDir": "lib",
-    "declaration": true,
-    "noEmit": true
+    "declaration": true
   },
   "include": [
     "src"
