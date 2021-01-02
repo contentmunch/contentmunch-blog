@@ -1,8 +1,51 @@
 {
-  "name": "contentmunch-blog",
-  "version": "0.1.0",
+  "name": "@contentmunch/contentmunch-blog",
+  "version": "0.1.2",
   "homepage": "https://blog.contentmunch.com",
-  "private": true,
+  "description": "Contentmunch blog components",
+  "author": "asikpradhan",
+  "license": "MIT",
+  "main": "lib/article/index.js",
+  "types": "lib/article/index.d.ts",
+  "files": [
+    "lib/article/"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/contentmunch/contentmunch-blog.git"
+  },
+  "bugs": {
+    "url": "https://github.com/contentmunch/contentmunch-blog/issues"
+  },
+  "directories": {
+    "doc": "docs",
+    "lib": "lib/article"
+  },
+  "keywords": [
+    "html5",
+    "reactjs",
+    "ui",
+    "component driven"
+  ],
+  "scripts": {
+    "start": "export PORT=3008 && react-scripts start ",
+    "prebuild": "rimraf lib",
+    "test": "react-scripts test -u",
+    "eject": "react-scripts eject",
+    "build": "npm run build:types && npm run build:js && react-scripts build && mv build docs",
+    "clean:tsx": "rimraf lib/*.tsx lib/**/*.tsx lib/**/**/*.tsx lib/**/**/**/*.tsx",
+    "clean:root": "rimraf lib/assets lib/*.ts lib/*.js",
+    "clean:tests": "rimraf lib/*.test.* lib/**/*.test.* lib/setupTests.* lib/__snapshots__/",
+    "clean:reactfiles": "rimraf lib/react-app-env.d.ts",
+    "postbuild": "npm run clean:tsx && npm run clean:reactfiles && npm run clean:tests && npm run clean:root",
+    "build:types": "cp tsconfig-tsc.json tsconfig.json && tsc --emitDeclarationOnly",
+    "build:js": "babel src --out-dir lib --extensions \".ts,.tsx\" --source-maps inline",
+    "postbuild:js": "rsync -avz --exclude='*.ts' src/ lib/",
+    "prepublishOnly": "npm run build",
+    "pretest": "cp tsconfig-test.json tsconfig.json",
+    "predeploy": "rimraf docs",
+    "deploy": "react-scripts build && mv build docs"
+  },
   "dependencies": {
     "@contentmunch/muncher-ui": "^0.6.30",
     "@testing-library/jest-dom": "^5.11.5",
@@ -29,12 +72,14 @@
     "typescript": "^4.0.5",
     "web-vitals": "^0.2.4"
   },
-  "scripts": {
-    "start": "export PORT=3006 && react-scripts start ",
-    "prebuild": "rimraf docs",
-    "build": "react-scripts build && mv build docs",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+  "devDependencies": {
+    "@babel/cli": "^7.12.10",
+    "@babel/core": "^7.12.10",
+    "@babel/plugin-proposal-class-properties": "^7.12.1",
+    "@babel/preset-env": "^7.12.11",
+    "@babel/preset-react": "^7.12.10",
+    "@babel/preset-typescript": "^7.12.7",
+    "rimraf": "^3.0.2"
   },
   "eslintConfig": {
     "extends": [
@@ -53,8 +98,6 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  },
-  "devDependencies": {
-    "rimraf": "^3.0.2"
   }
+
 }
